@@ -1,7 +1,7 @@
 import torch
 import cupy as cp
 from cupyx.profiler import benchmark as cupybench
-import nanopyc_day2 as nanopyc
+import day4 as nanopyc
 import torch.utils.benchmark as torchbench
 
 @nanopyc.jit
@@ -19,7 +19,7 @@ def bench(fn):
     globals={'fn': fn})
     return t0.timeit(20).mean * 1000
 
-for shape in [(10240, 1024)]:
+for shape in [(10240, 2048)]:
     M, N = shape
     a = torch.randn(M, N, device='cuda', dtype=torch.float32)
     b_torch = torch_exp(a)
