@@ -18,4 +18,4 @@ Make the `exp` kernel more efficient by using more parallelism! Now the performa
 Simplify the kernel code by using 2D partitioning. The pitfall is partitioning the rows to x dim.
 
 # Day 5
-First taste of fusion!
+First taste of fusion by creating a fused exp-div kernel!
