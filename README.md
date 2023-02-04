@@ -1,3 +1,10 @@
+# Prerequisite
+
+* pytorch
+* cupy
+
+You will also need a NVidia GPU to run the code.
+
 # Day 1
 Implement a JIT compiler using Python decorator!
 
