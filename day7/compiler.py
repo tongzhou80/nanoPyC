@@ -20,7 +20,7 @@ def compile(fn, args):
         
         # 2D grid, with M blocks and `nthreads` threads per block
         # Each block (`nthreads` threads) works on a row
-        nthreads = 128
+        nthreads = 256
         kernel(
             (M,), 
             (nthreads,),
