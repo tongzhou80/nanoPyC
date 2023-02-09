@@ -14,4 +14,3 @@ def jit(fn):
         return compiled[fn](*args)
     
     return inner
-    
