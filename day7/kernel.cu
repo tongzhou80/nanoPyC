@@ -21,7 +21,9 @@ void kernel(int M, int N, float* a, float* c) {
     // Actually we'll need some mechanism for the threads to communicate with each other
     */
 
-    __shared__ float psums[1024];
+    /** Accumulate the partial sums into the shared memory 
+     */
+    __shared__ float psums[1024];  // We use 1024 here because the max number of threads per block is 1024
     int psum_size = blockDim.x;
     float sum = 0;
     for (int n = tid; n < N; n += blockDim.x) {

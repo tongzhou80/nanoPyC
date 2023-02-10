@@ -18,7 +18,6 @@ def compile(fn, args):
         _a = cp.asarray(a)
         _c = cp.asarray(c)
         
-        # 2D grid, with M blocks and `nthreads` threads per block
         # Each block (`nthreads` threads) works on a row
         nthreads = 256
         kernel(
