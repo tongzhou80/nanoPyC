@@ -1,3 +1,6 @@
+This repo serves as an introduction to compiling numerical Python programs (A Python compiler). 
+The code is kept as simple as possible and each day is a small step forward based on the previous day.
+
 # Prerequisite
 
 * pytorch
