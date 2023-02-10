@@ -5,6 +5,7 @@ void kernel(int M, int N, float* a, float* b) {
         return;
     }
     
+    // Each thread works on an entire row
     for (int i = 0; i < N; i++) {
         b[m*N + i] = exp(a[m*N + i]);
     }

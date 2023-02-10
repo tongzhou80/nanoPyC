@@ -18,6 +18,7 @@ def compile(fn, args):
         _a = cp.asarray(a)
         _b = cp.asarray(b)
         nthreads = 128
+        # Each thread works on an entire row
         nblocks = ceil_div(M, nthreads)
         kernel(
             (nblocks,), 

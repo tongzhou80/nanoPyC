@@ -18,8 +18,9 @@ def compile(fn, args):
         _a = cp.asarray(a)
         _b = cp.asarray(b)
         nthreads = 256
-        # Each block has `nthreads` threads, and there are `M*N/nthreads` blocks
-        # This kernel only works when N >= nthreads
+        
+        # Each threads works on only one element, and we launch `M*N/nthreads` blocks
+        # with `nthreads` in each block 
         nblocks = ceil_div(M*N, nthreads)
         kernel(
             (nblocks,), 

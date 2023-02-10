@@ -18,7 +18,7 @@ def compile(fn, args):
         _a = cp.asarray(a)
         _b = cp.asarray(b)
         
-        # 2D block and 2D grid
+        # Try to use 2D block and 2D grid
         # Key: make x the col dim and y the row dim
         BM = 8  # y dim
         BN = 16 # x dim
