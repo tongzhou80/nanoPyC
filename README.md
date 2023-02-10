@@ -19,3 +19,18 @@ Simplify the kernel code by using 2D partitioning. The pitfall is partitioning t
 
 # Day 5
 First taste of fusion by creating a fused exp-div kernel!
+
+# Day 6
+Introducing reduction by a simple implementation of `softmax`.
+
+# Day 7
+Use parallel reduction and shared memory to make the `softmax` implementation more efficient.
+
+# Day 8
+More parallel reduction.
+
+# Day 9
+Make the `softmax` even more efficient by storing `exp(a)` in fast memory and eliminate reloading from global memory.
+
+# Day 10
+Trying out template-based dynamic code generation.
