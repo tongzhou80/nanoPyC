@@ -17,9 +17,8 @@ def compile(fn, args):
         b = torch.empty_like(a)
         _a = cp.asarray(a)
         _b = cp.asarray(b)
-        nthreads = 128
-        # Each thread works on an entire row
-        nblocks = ceil_div(M, nthreads)
+        nblocks = M
+        nthreads = 128  # 128 is a common starting point for thread number per block
         kernel(
             (nblocks,), 
             (nthreads,), 
