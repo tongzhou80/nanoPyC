@@ -1,12 +1,42 @@
 This repo serves as an introduction to compiling numerical Python programs (A Python compiler). 
-The code is kept as simple as possible and each day is a small step forward based on the previous day.
+The source code is kept as simple as possible and each day is a small step forward based on the previous day.
+We will start from hand-coding simple functions, and gradually try to automatally generate/optimize them
+using a compiler.
+
+Following the tutorial, you will learn:
+
+* Basic CUDA programming
+* How a compiler automatically generates and optimizes numerical code/loops
+
+The end result is, given a function like the following:
+
+```python
+def foo(a):
+    b = exp(a)
+    c = b.sum(axis=1)
+    d = b / c
+    return d
+```
+
+You will know how to make this code run much faster on CPU/GPU by just adding one line, like this
+
+```python
+@compiler.jit
+def foo(a):
+    b = exp(a)
+    c = b.sum(axis=1)
+    d = b / c
+    return d
+```
+
+and understand why it runs faster!
 
 # Prerequisite
 
 * pytorch
 * cupy
 
-You will also need a NVidia GPU to run the code.
+You will also need a Nvidia GPU to run the code. For now we generate CUDA code and compute on the GPU by default.
 
 # Day 1
 Implement a JIT compiler using Python decorator!
