@@ -6,6 +6,7 @@ using a compiler.
 Following the tutorial, you will learn:
 
 * Basic CUDA programming
+* How to accelerate your numerical code using parallelization, fusion and tiling
 * How a compiler automatically generates and optimizes numerical code/loops
 
 The end result is, given a function like the following:

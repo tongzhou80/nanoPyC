@@ -1,3 +1,7 @@
+/**
+Reduction using warp reduction instructions. This approach uses less
+shared memory than previous approaches.
+ */
 __inline__ __device__ float warpReduce(float value) {
     // Use XOR mode to perform butterfly reduction
     for (int i=16; i>=1; i/=2)
@@ -28,7 +32,7 @@ extern "C" __global__
 void kernel(int M, int N, float* a, float* c) {
     int m = blockIdx.x;
     int tid = threadIdx.x;
-
+    
     if (m > M) {
         return;
     }
@@ -36,32 +40,21 @@ void kernel(int M, int N, float* a, float* c) {
     const int ROW_SIZE = 1024*4;
     assert(N <= ROW_SIZE);
 
-    /** Load array a into the shared memory (later reused)
-     */
-    __shared__ float exps[ROW_SIZE];
-    for (int n = tid; n < N; n += blockDim.x) {
-        if (n < N) {
-            exps[n] = exp(a[m*N + n]);
-        }
-    }
-
     /** Accumulate the partial sums into the shared memory 
      */
-
     float sum = 0;
     for (int n = tid; n < N; n += blockDim.x) {
         if (n < N) {
-            sum += exps[n];
+            sum += exp(a[m*N + n]);
         }
     }
-
     __syncthreads();
 
     sum = blockReduce(sum);
-
+        
     for (int n = tid; n < N; n += blockDim.x) {
         if (n < N) {
-            c[m*N+n] = exps[n] / sum;
+            c[m*N+n] = exp(a[m*N + n]) / sum;
         }
     }
 }
